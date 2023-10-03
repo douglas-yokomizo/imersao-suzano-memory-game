@@ -1,11 +1,11 @@
 const cards = document.querySelectorAll('.card')
 let hasFlippedCard = false
 let firstCard, secondCard
-let lockBoard = true
+let lockBoard = false
 
 function flipCard() {
     if (lockBoard) return
-    if (this == firstCard) return
+    if (this === firstCard) return
 
     this.classList.add('flip')
 
@@ -41,7 +41,7 @@ function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove('flip')
         secondCard.classList.remove('flip')
-    }, 1500);
+    }, 1500)
     resetBoard()
 }
 
@@ -52,7 +52,7 @@ function resetBoard() {
 
 (function shuffleCards() {
     cards.forEach((card) => {
-        let randomPosition = Math.floor(Math.random() * 12)
+        const randomPosition = Math.floor(Math.random() * 12)
         card.style.order = randomPosition
     })
 })()
@@ -60,6 +60,3 @@ function resetBoard() {
 cards.forEach((card) => {
     card.addEventListener('click', flipCard)
 })
-
-
-
